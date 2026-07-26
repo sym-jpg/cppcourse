@@ -144,11 +144,12 @@ int deleteStudent(int n,string findname, string* namelist, int* scorelist) {
 			n = n - 1;
 			return n;
 		}
-		if (flag == 0) {
-		cout << "Student not found"<<endl;
-		}
+	}
+	if (flag == 0) {
+	cout << "Student not found"<<endl;
 	}
 }
+
 
 
 void showStatistics(int n, string* namelist, int* scorelist) {
