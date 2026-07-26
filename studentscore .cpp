@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-void add_student(string newname, string* namelist, int n, int newscore, int* scorelist);
+int add_student(string newname, string* namelist, int n, int newscore, int* scorelist);
 void showAllStudents(int n, string* namelist, int* scorelist);
 void findandshowstudent(int n,string findname, string* namelist, int* scorelist);
 void Modifyscore (int n,string findname, string* namelist, int* scorelist, int revisedscore); 
@@ -31,7 +31,7 @@ int main () {
 	while (a != 0) {
 		cin >> a;
 		if (a == 1) {
-	    	add_student(newname, namelist, n, newscore, scorelist);
+	    	n = add_student(newname, namelist, n, newscore, scorelist);
 		}
 		else if (a == 2) {
 			showAllStudents(n,namelist, scorelist);
@@ -56,25 +56,26 @@ int main () {
     
 }
 
-void add_student(string newname, string* namelist, int n, int newscore, int* scorelist){
+int add_student(string newname, string* namelist, int n, int newscore, int* scorelist){
 	cout << "Please input student name:";
 	cin >> newname;
 	for (int i = 0; i < n; i++) {
 		if (namelist[i] == newname) {
 			cout << "Student already exists." << endl;
-			return ;
+			return n;
 		}
 	}
 	cout << "Please input student score:";
 	cin >> newscore;
 	if (newscore < 0 || newscore > 100) {
 		cout << "wrong" << endl;
-		return ;
+		return n;
 	}
 	namelist[n] = newname;
 	scorelist[n] = newscore;
 	n = n + 1;
 	cout << "Student added successfully." << endl;
+	return n;
 }
 
 void showAllStudents(int n, string* namelist, int* scorelist) {
