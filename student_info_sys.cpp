@@ -33,12 +33,11 @@ int main () {
 	    }
 	    cout << "Please input student score:";
 	    cin >> newscore;
-	    for (int i = 0; i < n; i++) {
-		    if (newscore < 0 || newscore > 100) {
-		        cout << "wrong" << endl;
-		        return 0;
-		    }
-		}
+		 if (newscore < 0 || newscore > 100) {
+		     cout << "wrong" << endl;
+	        return 0;
+	    }
+		
 		for (int i = 0; i < n; i++) {
 	    	newName[n] = newname;
 	    	newScore[n] = newscore;
