@@ -5,7 +5,7 @@ using namespace std;
 int add_student(string newname, string* namelist, int n, int newscore, int* scorelist);
 void showAllStudents(int n, string* namelist, int* scorelist);
 void findandshowstudent(int n,string findname, string* namelist, int* scorelist);
-void Modifyscore (int flag,int n,string findname, string* namelist, int* scorelist, int revisedscore); 
+void Modifyscore (int n,string findname, string* namelist, int* scorelist, int revisedscore); 
 void deleteStydent(int n,string findname, string* namelist, int* scorelist) ;
 void showStatistics(int n, string* namelist, int* scorelist) ;
 
@@ -41,7 +41,7 @@ int main () {
 			findandshowstudent(n, findname, namelist, scorelist);
 		}
 		else if (a == 4) {
-			Modifyscore(flag,n,findname,namelist,scorelist,revisedscore);
+			Modifyscore(n,findname,namelist,scorelist,revisedscore);
 		}
 		else if (a == 5) {
 			deleteStydent(n,findname,namelist,scorelist);
@@ -104,8 +104,9 @@ void findandshowstudent(int n,string findname, string* namelist, int* scorelist)
 
 
 
-void Modifyscore (int flag,int n,string findname, string* namelist, int* scorelist, int revisedscore) {
+void Modifyscore (int n,string findname, string* namelist, int* scorelist, int revisedscore) {
 	cin >> findname ;
+	int flag = 0;
 	for (int i=0; i<n; i++) {
 		if (namelist[i] == findname) {
 			flag = 1;
@@ -121,7 +122,7 @@ void Modifyscore (int flag,int n,string findname, string* namelist, int* scoreli
 		}
 	}
 	if (flag == 0) {
-		cout << "Student not found" << endl;
+		cout << "Student not found"<<endl;
 	}
 }
 
