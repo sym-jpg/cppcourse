@@ -6,7 +6,7 @@ int add_student(string newname, string* namelist, int n, int newscore, int* scor
 void showAllStudents(int n, string* namelist, int* scorelist);
 void findandshowstudent(int n,string findname, string* namelist, int* scorelist);
 void Modifyscore (int n,string findname, string* namelist, int* scorelist, int revisedscore); 
-void deleteStydent(int n,string findname, string* namelist, int* scorelist) ;
+int deleteStudent(int n,string findname, string* namelist, int* scorelist) ;
 void showStatistics(int n, string* namelist, int* scorelist) ;
 
 int main () {
@@ -44,7 +44,7 @@ int main () {
 			Modifyscore(n,findname,namelist,scorelist,revisedscore);
 		}
 		else if (a == 5) {
-			deleteStydent(n,findname,namelist,scorelist);
+			n = deleteStudent(n,findname,namelist,scorelist);
 		}
 		else if (a == 6) {
 			showStatistics(n,namelist,scorelist);
@@ -128,16 +128,19 @@ void Modifyscore (int n,string findname, string* namelist, int* scorelist, int r
 
 
 
-void deleteStydent(int n,string findname, string* namelist, int* scorelist) {
+int deleteStudent(int n,string findname, string* namelist, int* scorelist) {
 	cin >> findname ;
 	for (int i=0; i<n; i++) {
 		if (namelist[i] == findname) {
-			int k = i;
-			while (k >= i && k <= n) {
-				namelist[i] = namelist[i + 1];
-				scorelist[i] = scorelist[i + 1];
+			int k = i; 
+			while (k >= i && k < n) {
+				namelist[k] = namelist[k + 1];
+				scorelist[k] = scorelist[k + 1];
+				k = k + 1;
 			}
 			cout << "Student deleted successfully" << endl;
+			n = n - 1;
+			return n;
 		}
 		else {
 			cout << "Student not found" << endl;
