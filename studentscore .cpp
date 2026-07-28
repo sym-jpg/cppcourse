@@ -148,6 +148,7 @@ int deleteStudent(int n,string findname, string* namelist, int* scorelist) {
 	if (flag == 0) {
 	cout << "Student not found"<<endl;
 	}
+	return n;
 }
 
 
